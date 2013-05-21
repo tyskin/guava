@@ -86,8 +86,8 @@ Each of these are non-static methods on a particular Optional<T> value.
 	 
 Optional provides several more handy utility methods besides these; consult the Javadoc for details.
 
-### What's the point?
-Besides the increase in readability that comes from giving null a name, the biggest advantage of Optional is its idiot-proof-ness. It forces you to actively think about the absent case if you want your program to compile at all, since you have to actively unwrap the Optional and address that case. Null makes it disturbingly easy to simply forget things, and though FindBugs helps, we don't think it addresses the issue nearly as well.
+### 意义何在？
+赋予　null 一个名称不仅使得程序的可读性增加, Optional 最大的好处是它的 idiot-proof-ness. 它迫使你在编译时就考虑 null 存在的情况, since you have to actively unwrap the Optional and address that case. Null makes it disturbingly easy to simply forget things, and though FindBugs helps, we don't think it addresses the issue nearly as well.
 
 This is especially relevant when you're returning values that may or may not be "present." You (and others) are far more likely to forget that other.method(a, b) could return a null value than you're likely to forget that a could be null when you're implementing other.method. Returning Optional makes it impossible for callers to forget that case, since they have to unwrap the object themselves for their code to compile.
 
