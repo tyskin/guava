@@ -2,17 +2,17 @@
 >
 > "I call it my billion-dollar mistake." - Sir C. A. R. Hoare, on his invention of the null reference
 
-## Using and avoiding null
+## 使用和避免 null
 
-Careless use of null can cause a staggering variety of bugs. Studying the Google code base, we found that something like 95% of collections weren't supposed to have any null values in them, and having those fail fast rather than silently accept null would have been helpful to developers.
+未小心使用 null 会造成各种各样令人震惊的bug. 通过对 Google 代码库的研究, 我们发现大约有95%的集合不应该有空值, 比起默默接受 null 值, 早一点让他们出错对开发人员要好得多.
 
-Additionally, null is unpleasantly ambiguous. It's rarely obvious what a null return value is supposed to mean -- for example, Map.get(key) can return null either because the value in the map is null, or the value is not in the map. Null can mean failure, can mean success, can mean almost anything. Using something other than null makes your meaning clear.
+Additionally, null is unpleasantly ambiguous. 返回 null 的含义是很不明显的 -- 比如, Map.get(key) 方法返回 null 值, 可能是 map 中对应的值为 null, 也可能是 key 不在这个 map 中. Null can mean failure, can mean success, can mean almost anything. Using something other than null makes your meaning clear.
 
 That said, there are times when null is the right and correct thing to use. null is cheap, in terms of memory and speed, and it's unavoidable in object arrays. But in application code, as opposed to libraries, it is a major source of confusion, difficult and weird bugs, and unpleasant ambiguities -- e.g. when Map.get returns null, it can mean the value was absent, or the value was present and null. Most critically, null gives no indication what a null value means.
 
 For these reasons, many of Guava's utilities are designed to fail fast in the presence of null rather than allow nulls to be used, so long as there is a null-friendly workaround available. Additionally, Guava provides a number of facilities both to make using null easier, when you must, and to help you avoid using null.
 
-### Specific Cases
+### 具体案例
 If you're trying to use null values in a Set or as a key in a Map -- don't; it's clearer (less surprising) if you explicitly special-case null during lookup operations.
 
 If you want to use null as a value in a Map -- leave out that entry; keep a separate Set of non-null keys (or null keys). It's very easy to mix up the cases where a Map contains an entry for a key, with value null, and the case where the Map has no entry for a key. It's much better just to keep such keys separate, and to think about what it means to your application when the value associated with a key is null.
@@ -24,6 +24,7 @@ Consider if there is a natural "null object" that can be used. There isn't alway
 If you really need null values, and you're having problems with a null-hostile collection implementations, use a different implementation. For example, use Collections.unmodifiableList(Lists.newArrayList()) instead of ImmutableList.
 
 ### Optional
+
 Many of the cases where programmers use null is to indicate some sort of absence: perhaps where there might have been a value, there is none, or one could not be found. For example, Map.get returns null when no value is found for a key.
 
 Optional<T> is a way of replacing a nullable T reference with a non-null value. An Optional may either contain a non-null T reference (in which case we say the reference is "present"), or it may contain nothing (in which case we say the reference is "absent"). It is never said to "contain null."
