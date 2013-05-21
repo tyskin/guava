@@ -12,7 +12,7 @@ Guava 项目包含数个 Google 员工在 Java 项目中用到的核心库: 集合, 缓存, 原生支持, 
 
     - <b>前提条件</b>: 更容易的对你的方法进行前提条件的测试.
 
-    - <b>常见的对象方法</b>: 简化了Object常见方法的实现, 如 hashCode() 和 toString().
+    - <b>常见的对象方法</b>: 简化了Object常用方法的实现, 如 hashCode() 和 toString().
 
     - <b>排序</b>: Guava 强大的 "fluent Comparator"比较器, 提供多关键字排序.
 
@@ -37,21 +37,21 @@ Guava 项目包含数个 Google 员工在 Java 项目中用到的核心库: 集合, 缓存, 原生支持, 
     
     - <b>Service</b>: Things that start up and shut down, taking care of the difficult state logic for you.
 
-+ <b>Strings</b>: A few extremely useful string utilities: splitting, joining, padding, and more.
++ <b>Strings</b>: 一个非常非常有用的字符串工具类: 提供 splitting, joining, padding 等操作.
 
-+ <b>Primitives</b>: operations on primitive types, like int and char, not provided by the JDK, including unsigned variants for some types.
++ <b>Primitives</b>: 扩展 JDK 中未提供的对原生类型（如int、char等）的操作, 包括某些类型的无符号的变量.
 
-+ <b>Ranges</b>: Guava's powerful API for dealing with ranges on Comparable types, both continuous and discrete.
++ <b>Ranges</b>: Guava 一个强大的 API, 提供 Comparable 类型的范围处理, 包括连续和离散的情况.
 
-+ <b>I/O</b>: Simplified I/O operations, especially on whole I/O streams and files, for Java 5 and 6.
++ <b>I/O</b>: 简化 I/O 操作, 特别是对 I/O 流和文件的操作, for Java 5 and 6.
 
-+ <b>Hashing</b>: Tools for more sophisticated hashes than what's provided by Object.hashCode(), including Bloom filters.
++ <b>Hashing</b>: 提供比 Object.hashCode() 更复杂的 hash 方法, 提供 Bloom filters.
 
-+ <b>EventBus</b>: Publish-subscribe-style communication between components without requiring the components to explicitly register with one another.
++ <b>EventBus</b>: 基于发布-订阅模式的组件通信，但是不需要明确地注册在委托对象中
 
-+ <b>Math</b>: Optimized, thoroughly tested math utilities not provided by the JDK.
++ <b>Math</b>: 优化的 math 工具类，经过完整测试.
 
-+ <b>Reflection</b>: Guava utilities for Java's reflective capabilities.
++ <b>Reflection</b>: Guava 的 Java 反射机制工具类.
 
 + <b>Tips</b>: Getting your application working the way you want it to with Guava.
     - <b>Philosophy</b>: what Guava is and isn't, and our goals.
