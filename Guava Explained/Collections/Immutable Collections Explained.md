@@ -17,31 +17,31 @@ class Foo {
 ```
 
 ## Why?
-Immutable objects have many advantages, including:
+不可变对象的好处：
 
-- Safe for use by untrusted libraries.
-- Thread-safe: can be used by many threads with no risk of race conditions.
-- Doesn't need to support mutation, and can make time and space savings with that assumption. All immutable collection implementations are more memory-efficient than their mutable siblings (analysis)
-- Can be used as a constant, with the expectation that it will remain fixed
+- 安全地使用不受信任的库
+- 线程安全: 可以被多个线程使用, 无需考虑竞态条件.
+- 不需要使用可变对象的场合, 不可变类更加节省时间和空间. All immutable collection implementations are more memory-efficient than their mutable siblings (analysis)
+- 可以像常量一样使用, 确保它是持久不变的
 
-Making immutable copies of objects is a good defensive programming technique. Guava provides simple, easy-to-use immutable versions of each standard Collection type, including Guava's own Collection variations.
+获得对象的不可变拷贝是一项很好的防御性编程技术. Guava 为每一个标准容器类提供了一个简单好用的不可变版本, including Guava's own Collection variations.
 
-The JDK provides Collections.unmodifiableXXX methods, but in our opinion, these can be
+JDK 已经提供了 Collections.unmodifiableXXX 方法, 但是它 ...
 
-- unwieldy and verbose; unpleasant to use everywhere you want to make defensive copies
-- unsafe: the returned collections are only truly immutable if nobody holds a reference to the original collection
-- inefficient: the data structures still have all the overhead of mutable collections, including concurrent modification checks, extra space in hash tables, etc.
+- 冗长难用; unpleasant to use everywhere you want to make defensive copies
+- 不安全: the returned collections are only truly immutable if nobody holds a reference to the original collection
+- 效率低下: the data structures still have all the overhead of mutable collections, including concurrent modification checks, extra space in hash tables, etc.
 
 <b>When you don't expect to modify a collection, or expect a collection to remain constant, it's a good practice to defensively copy it into an immutable collection.</b>
 
 <b>Important</b>: Each of the Guava immutable collection implementations rejects null values. We did an exhaustive study on Google's internal code base that indicated that null elements were allowed in collections about 5% of the time, and the other 95% of cases were best served by failing fast on nulls. If you need to use null values, consider using Collections.unmodifiableList and its friends on a collection implementation that permits null. More detailed suggestions can be found here.
 
 ## How?
-An ImmutableXXX collection can be created in several ways:
+有多种方式可以创建一个不可变的 ImmutableXXX 容器:
 
-- using the copyOf method, for example, ImmutableSet.copyOf(set)
-- using the of method, for example, ImmutableSet.of("a", "b", "c") or ImmutableMap.of("a", 1, "b", 2)
-- using a Builder, for example,
+- copyOf 方法, eg: ImmutableSet.copyOf(set)
+- of 方法, eg: ImmutableSet.of("a", "b", "c") or ImmutableMap.of("a", 1, "b", 2)
+- 创建一个建造器 Builder, eg:
 
 ```
 public static final ImmutableSet<Color> GOOGLE_COLORS =
@@ -58,7 +58,7 @@ ImmutableSet.of("a", "b", "c", "a", "d", "b")
 ```
 will iterate over its elements in the order "a", "b", "c", "d".
 
-### copyOf is smarter than you think
+### copyOf 比你想象的更聪明
 It is useful to remember that ImmutableXXX.copyOf attempts to avoid copying the data when it is safe to do so -- the exact details are unspecified, but the implementation is typically "smart". For example,
 
 ```

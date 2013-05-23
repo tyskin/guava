@@ -4,7 +4,7 @@ Guava 项目包含数个 Google 员工在 Java 项目中用到的核心库: 集合, 缓存, 原生支持, 
 
 查看 Javadoc 并不是学习如何使用这些库的最有效的方式, 这里只是对 Guava 最流行和最强大的一些特性作了些说明.
 
-<i>This wiki is a work in progress, and parts of it may still be under construction.</i>
+*This wiki is a work in progress, and parts of it may still be under construction.*
 
 + <b>基本工具类</b>: Make using the Java language more pleasant.
 

@@ -11,13 +11,13 @@ Objects.equal("a", null); // returns false
 Objects.equal(null, null); // returns true
 ```
 
-<i>Note: The newly introduced Objects class in JDK 7 provides the equivalent Objects.equals method.</i>
+*Note: The newly introduced Objects class in JDK 7 provides the equivalent Objects.equals method.*
 
 ### hashCode
 
 Hashing all the fields of an Object should be simpler. Guava's Objects.hashCode(Object...) creates a sensible, order-sensitive hash for the specified sequence of fields. Use Objects.hashCode(field1, field2, ..., fieldn) instead of building the hash by hand.
 
-<i>Note: The newly introduced Objects class in JDK 7 provides the equivalent Objects.hash(Object...).</i>
+*Note: The newly introduced Objects class in JDK 7 provides the equivalent Objects.hash(Object...).*
 
 ### toString
 
