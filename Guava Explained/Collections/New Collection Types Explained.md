@@ -105,14 +105,13 @@ Multimap also supports a number of powerful views.
 A Multimap<K, V> is not a Map<K, Collection<V>>, though such a map might be used in a Multimap implementation. Notable differences include:
 
 + Multimap.get(key) always returns a non-null, possibly empty collection. This doesn't imply that the multimap spends any memory associated with the key, but instead, the returned collection is a view that allows you to add associations with the key if you like.
-
-+ If you prefer the more Map-like behavior of returning null for keys that aren't in the multimap, use the asMap() view to get a Map<K, Collection<V>>. (You may have to cast the Collection<V> to a List or Set.)
++ If you prefer the more Map-like behavior of returning null for keys that aren't in the multimap, use the asMap() view to get a Map< K, Collection< V>>. (You may have to cast the Collection< V> to a List or Set.)
 + Multimap.containsKey(key) is true if and only if there are any elements associated with the specified key. In particular, if a key k was previously associated with one or more values which have since been removed from the multimap, Multimap.containsKey(k) will return false.
 + Multimap.entries() returns all entries for all keys in the Multimap. If you want all key-collection entries, use asMap().entrySet().
 + Multimap.size() returns the number of entries in the entire multimap, not the number of distinct keys. Use Multimap.keySet().size() instead to get the number of distinct keys.
 
 ### Implementations
-Multimap provides a wide variety of implementations, so you can use it anywhere you would have used a Map<K, Collection<V>>.
+Multimap provides a wide variety of implementations, so you can use it anywhere you would have used a Map< K, Collection< V>>.
 
 Implementation	| Keys behave like...|	 Values behave like..
 :---|:---|:---
